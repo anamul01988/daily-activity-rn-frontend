@@ -1,3 +1,4 @@
+import SafeAreaWrapper from "@/components/shared/safe-area-wrapper";
 import { useNavigation } from "@react-navigation/native";
 import { AuthScreenNavigationType } from "navigations/types";
 import React from "react";
@@ -10,10 +11,13 @@ const SignInScreen = () => {
     navigation.navigate("SignUp");
   };
   return (
-    <Box>
-      <Text>Sign in Screen</Text>
-      <Button title="Navigate to sign up" onPress={navigateToSignUpScreen} />
-    </Box>
+    <SafeAreaWrapper>
+      {/* {" "} => aigula thakle error dibe ==================== to be noted */}
+      <Box>
+        <Text>Sign in Screen</Text>
+        <Button title="Navigate to sign up" onPress={navigateToSignUpScreen} />
+      </Box>
+    </SafeAreaWrapper>
   );
 };
 
