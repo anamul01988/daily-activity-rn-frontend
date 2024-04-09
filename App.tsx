@@ -3,6 +3,7 @@ import Navigation from "./src/navigations";
 import theme from "utils/theme";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
+import useUserGlobalStore from "@/store/useUserGlobalStore";
 // import theme from "./src/utils/theme";
 
 export default function App() {
