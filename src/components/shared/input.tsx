@@ -5,7 +5,7 @@ import { StyleSheet, TextInput, TextInputProps } from "react-native";
 type InputProps = {
   label: string;
   // error?: FieldError | undefined
-  error?: undefined;
+  error?: any;
 } & TextInputProps;
 
 const Input = ({ label, error, ...props }: InputProps) => {

@@ -11,14 +11,14 @@ import AuthStackNavigator from "./auth-stack-navigator";
 
 const Navigation = () => {
   const { user, updateUser } = useUserGlobalStore();
-  console.log(`user`, JSON.stringify(user, null, 2));
-  useEffect(() => {
-    // updateUser({
-    //   email: "anam@gmail.com",
-    //   name: "anamul",
-    // });
-    updateUser(null);
-  }, []);
+  // console.log(`user`, JSON.stringify(user, null, 2));
+  // useEffect(() => {
+  //   // updateUser({
+  //   //   email: "anam@gmail.com",
+  //   //   name: "anamul",
+  //   // });
+  //   updateUser(null);
+  // }, []);
 
   return (
     <NavigationContainer>

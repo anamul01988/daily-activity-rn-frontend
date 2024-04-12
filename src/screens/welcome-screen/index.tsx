@@ -2,8 +2,8 @@ import Button from "@/components/shared/button";
 import SafeAreaWrapper from "@/components/shared/safe-area-wrapper";
 import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
-import { AuthScreenNavigationType } from "navigations/types";
-import React from "react";
+import { AuthScreenNavigationType } from "@/navigation/types";
+import React, { useEffect } from "react";
 import { Image } from "react-native";
 import { Box, Text } from "utils/theme";
 const BLOSSOM_IMAGE =
@@ -16,6 +16,7 @@ const WelcomeScreen = () => {
   const navigateToSignUpScreen = () => {
     navigation.navigate("SignUp");
   };
+
   return (
     <SafeAreaWrapper>
       <LinearGradient
