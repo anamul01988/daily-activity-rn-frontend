@@ -19,7 +19,7 @@ const Navigation = () => {
   //   // });
   //   updateUser(null);
   // }, []);
-
+  console.log("user for navigation===============", user);
   return (
     <NavigationContainer>
       {user ? <AppStackNavigator /> : <AuthStackNavigator />}

@@ -1,5 +1,6 @@
 import { IUser } from "@/types";
-import axiosInstance, { DAILY_ACTIVITY_TOKEN_NAME, saveToken } from "./config";
+// import axiosInstance, { DAILY_ACTIVITY_TOKEN_NAME, saveToken } from "./config";
+import axiosInstance, { BLOSSOM_TOKEN_NAME, saveToken } from "./config";
 
 type RegisterUserTypes = IUser;
 // export const registerUser = async ({
@@ -51,14 +52,14 @@ export const registerUser = async ({
   password,
 }: RegisterUserTypes) => {
   try {
-    console.log(
-      "whait is the problem ===================",
-      email,
-      password,
-      name
-    );
+    // console.log(
+    //   "whait is the problem ===================",
+    //   email,
+    //   password,
+    //   name
+    // );
     // baseUrl : //localhost:1337/
-  const response = await axiosInstance.post("/users/create", {
+    const response = await axiosInstance.post("/users/create", {
       email,
       password,
       name,
@@ -80,7 +81,9 @@ export const loginUser = async ({ email, password }: LoginUserTypes) => {
     });
     const _token = response.data.token;
     axiosInstance.defaults.headers.common["Authorization"] = _token;
-    saveToken(DAILY_ACTIVITY_TOKEN_NAME, _token);
+    // console.log("token for save", _token);
+    // saveToken(DAILY_ACTIVITY_TOKEN_NAME, _token);
+    saveToken(BLOSSOM_TOKEN_NAME, _token);
     return response.data.user;
   } catch (error) {
     console.log("error in loginUser", error);

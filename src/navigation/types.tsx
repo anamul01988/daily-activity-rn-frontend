@@ -1,4 +1,5 @@
 // import { ICategory, ITask } from "@/types";
+import { ICategory } from "@/types";
 import { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
 import {
   CompositeNavigationProp,
@@ -36,12 +37,12 @@ export type CategoriesStackParamList = {
   Category: {
     id: string;
   };
-  //   CreateCategory: {
-  //     category?: ICategory;
-  //   };
   CreateCategory: {
-    id?: string;
+    category?: ICategory;
   };
+  // CreateCategory: {
+  //   id?: string;
+  // };
 };
 
 export type AppStackParamList = {
