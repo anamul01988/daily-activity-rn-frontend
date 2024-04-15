@@ -54,7 +54,7 @@ const CategoriesScreen = () => {
       refreshInterval: 1000, //page a ashar 1s por hooc call hobe
     }
   );
-  console.log("categories dataa", data, isLoading, error);
+  // console.log("categories dataa", data, isLoading, error);
 
   if (isLoading) {
     return <Loader />;

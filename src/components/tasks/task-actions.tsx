@@ -1,10 +1,10 @@
 import axiosInstance, { BASE_URL, fetcher } from "@/services/config";
 import { ICategory, ITaskRequest } from "@/types";
 import { Box, Text } from "@/utils/theme";
-// import { format, isToday } from "date-fns";
+import { format, isToday } from "date-fns";
 import React, { useState } from "react";
 import { FlatList, Pressable, TextInput } from "react-native";
-// import { Calendar } from "react-native-calendars";
+import { Calendar } from "react-native-calendars";
 import useSWR, { useSWRConfig } from "swr";
 import useSWRMutation from "swr/mutation";
 import Loader from "../shared/loader";
@@ -53,15 +53,15 @@ const TaskActions = ({ categoryId }: TaskActionsProps) => {
 
   const { mutate } = useSWRConfig();
 
-  if (isLoading || !categories) {
-    return <Loader />;
-  }
+  // if (isLoading || !categories) {
+  //   return <Loader />;
+  // }
 
   const selectedCategory = categories?.find(
     (_category) => _category._id === newTask.categoryId
   );
 
-  console.log(`selectedCategory`, JSON.stringify(selectedCategory, null, 2));
+  // console.log(`selectedCategory`, JSON.stringify(selectedCategory, null, 2));
 
   const onCreateTask = async () => {
     try {
@@ -70,6 +70,7 @@ const TaskActions = ({ categoryId }: TaskActionsProps) => {
          * mutation
          */
         await trigger({
+          //how it works
           ...newTask,
         });
         setNewTask({
@@ -88,8 +89,7 @@ const TaskActions = ({ categoryId }: TaskActionsProps) => {
 
   return (
     <Box>
-      dd
-      {/* <Box
+      <Box
         bg="lightGray"
         px="4"
         py="3.5"
@@ -113,15 +113,15 @@ const TaskActions = ({ categoryId }: TaskActionsProps) => {
               return {
                 ...prev,
                 name: text,
-              }
-            })
+              };
+            });
           }}
-          onSubmitEditing={onCreateTask}
+          onSubmitEditing={onCreateTask} //need to deep underrstand
         />
         <Box flexDirection="row" alignItems="center">
           <Pressable
             onPress={() => {
-              setIsSelectingDate((prev) => !prev)
+              setIsSelectingDate((prev) => !prev);
             }}
           >
             <Box
@@ -141,7 +141,7 @@ const TaskActions = ({ categoryId }: TaskActionsProps) => {
           <Box width={12} />
           <Pressable
             onPress={() => {
-              setIsSelectingCategory((prev) => !prev)
+              setIsSelectingCategory((prev) => !prev);
             }}
           >
             <Box
@@ -180,13 +180,14 @@ const TaskActions = ({ categoryId }: TaskActionsProps) => {
               return (
                 <Pressable
                   onPress={() => {
+                    console.log("pressed hoicce", newTask, item._id);
                     setNewTask((prev) => {
                       return {
                         ...prev,
                         categoryId: item._id,
-                      }
-                    })
-                    setIsSelectingCategory(false)
+                      };
+                    });
+                    setIsSelectingCategory(false);
                   }}
                 >
                   <Box
@@ -195,10 +196,16 @@ const TaskActions = ({ categoryId }: TaskActionsProps) => {
                     borderTopStartRadius={index === 0 ? "rounded-3xl" : "none"}
                     borderTopEndRadius={index === 0 ? "rounded-3xl" : "none"}
                     borderBottomStartRadius={
-                      categories?.length - 1 === index ? "rounded-2xl" : "none"
+                      categories?.length !== undefined &&
+                      categories?.length - 1 === index
+                        ? "rounded-2xl"
+                        : "none"
                     }
                     borderBottomEndRadius={
-                      categories?.length - 1 === index ? "rounded-2xl" : "none"
+                      categories?.length !== undefined &&
+                      categories?.length - 1 === index
+                        ? "rounded-2xl"
+                        : "none"
                     }
                   >
                     <Box flexDirection="row">
@@ -214,7 +221,7 @@ const TaskActions = ({ categoryId }: TaskActionsProps) => {
                     </Box>
                   </Box>
                 </Pressable>
-              )
+              );
             }}
           />
         </Box>
@@ -222,20 +229,20 @@ const TaskActions = ({ categoryId }: TaskActionsProps) => {
       {isSelectingDate && (
         <Box>
           <Calendar
-            minDate={format(today, "Y-MM-dd")}
+            minDate={format(today, "y-MM-dd")}
             onDayPress={(day) => {
-              setIsSelectingDate(false)
-              const selectedDate = new Date(day.dateString).toISOString()
+              setIsSelectingDate(false);
+              const selectedDate = new Date(day.dateString).toISOString();
               setNewTask((prev) => {
                 return {
                   ...prev,
                   date: selectedDate,
-                }
-              })
+                };
+              });
             }}
           />
         </Box>
-      )} */}
+      )}
     </Box>
   );
 };

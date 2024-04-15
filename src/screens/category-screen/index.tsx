@@ -34,9 +34,9 @@ const CategoryScreen = () => {
     refreshInterval: 1000,
   });
 
-  if (isLoadingTasks || isLoadingCategory || !category || !tasks) {
-    return <Loader />;
-  }
+  // if (isLoadingTasks || isLoadingCategory || !category || !tasks) {
+  //   return <Loader />;
+  // }
 
   return (
     <SafeAreaWrapper>
@@ -47,17 +47,17 @@ const CategoryScreen = () => {
         <Box height={16} />
         <Box flexDirection="row">
           <Text variant="textXl" fontWeight="700">
-            {category.icon.symbol}
+            {category?.icon.symbol}
           </Text>
           <Text
             variant="textXl"
             fontWeight="700"
             ml="3"
             style={{
-              color: category.color.code,
+              color: category?.color.code,
             }}
           >
-            {category.name}
+            {category?.name}
           </Text>
         </Box>
         <Box height={16} />

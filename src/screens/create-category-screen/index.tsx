@@ -17,7 +17,7 @@ import useSWRMutation from "swr/mutation";
 
 const COLORS = getColors();
 const ICONS = getIcons();
-console.log("all colors and icons", COLORS, ICONS);
+// console.log("all colors and icons", COLORS, ICONS);
 
 const DEFAULT_COLOR = COLORS[0];
 const DEFAULT_ICON = ICONS[0];
@@ -91,7 +91,7 @@ const CreateCategoryScreen = () => {
 
   const { mutate } = useSWRConfig();
 
-  console.log(`route.params`, JSON.stringify(route.params, null, 2));
+  // console.log(`route.params`, JSON.stringify(route.params, null, 2));
 
   const [newCategory, setNewCategory] = useState<
     Omit<ICategory, "_id" | "user" | "isEditable"> //omit use hoice type declare korbo ar jader ignore korbo tadeer bole dewa holo
@@ -104,16 +104,16 @@ const CreateCategoryScreen = () => {
   const createNewCategory = async () => {
     try {
       if (isEditing) {
-        console.log(
-          "updatedCategory123================",
-          route.params.category,
-          newCategory
-        );
+        // console.log(
+        //   "updatedCategory123================",
+        //   route.params.category,
+        //   newCategory
+        // );
         const updatedCategoryItem = {
           ...route.params.category,
           ...newCategory,
         };
-        console.log("updatedCategory================", updatedCategoryItem);
+        // console.log("updatedCategory================", updatedCategoryItem);
         await updateTrigger({
           ...updatedCategoryItem,
         });
@@ -131,7 +131,7 @@ const CreateCategoryScreen = () => {
   };
 
   const updateColor = (color: IColor) => {
-    console.log("updated color", color);
+    // console.log("updated color", color);
     setNewCategory((prev) => {
       return {
         ...prev,
@@ -162,7 +162,7 @@ const CreateCategoryScreen = () => {
       throw error;
     }
   };
-  console.log("state value ================", newCategory);
+  // console.log("state value ================", newCategory);
   return (
     <SafeAreaWrapper>
       <Box flex={1} mx="4">
