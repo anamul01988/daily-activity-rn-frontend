@@ -15,6 +15,7 @@ export type AuthStackParamList = {
   Welcome: undefined;
   SignIn: undefined;
   SignUp: undefined;
+  Profile: undefined;
 };
 
 export type RootBottomTabParamList = {
@@ -22,6 +23,7 @@ export type RootBottomTabParamList = {
   Today: undefined;
   Completed: undefined;
   CategoriesStack: NavigatorScreenParams<CategoriesStackParamList>;
+  Profile: any;
 };
 
 export type HomeStackParamList = {

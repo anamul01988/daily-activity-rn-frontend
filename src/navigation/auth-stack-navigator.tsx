@@ -1,40 +1,30 @@
-// import SignInScreen from "@/screens/sign-in-screen";
-// import SignUpScreen from "@/screens/sign-up-screen";
-// import WelcomeScreen from "@/screens/welcome-screen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
-import { AuthStackParamList } from "./types";
 import WelcomeScreen from "screens/welcome-screen";
 import SignInScreen from "screens/sign-in-screen";
 import SignUpScreen from "screens/sign-up-screen";
 
-const Stack = createNativeStackNavigator<AuthStackParamList>();
+const AuthStack = createNativeStackNavigator();
 
-const AuthStackNavigator = () => {
+const AuthStackNavigator = ({ initialRouteName }: any) => {
   return (
-    <Stack.Navigator>
-      <Stack.Screen
+    <AuthStack.Navigator initialRouteName={initialRouteName}>
+      <AuthStack.Screen
         name="Welcome"
-        options={{
-          headerShown: false,
-        }}
+        options={{ headerShown: false }}
         component={WelcomeScreen}
       />
-      <Stack.Screen
+      <AuthStack.Screen
         name="SignIn"
-        options={{
-          headerShown: false,
-        }}
+        options={{ headerShown: false }}
         component={SignInScreen}
       />
-      <Stack.Screen
+      <AuthStack.Screen
         name="SignUp"
-        options={{
-          headerShown: false,
-        }}
+        options={{ headerShown: false }}
         component={SignUpScreen}
       />
-    </Stack.Navigator>
+    </AuthStack.Navigator>
   );
 };
 

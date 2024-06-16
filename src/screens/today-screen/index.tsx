@@ -15,7 +15,6 @@ const TodayScreen = () => {
     isLoading: isLoadingTasks,
     mutate: mutateTasks,
   } = useSWR<ITask[]>(`tasks/today`, fetcher);
-
   if (isLoadingTasks || !tasks) {
     return <Loader />;
   }

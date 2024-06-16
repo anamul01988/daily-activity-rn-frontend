@@ -1,13 +1,10 @@
 import axios from "axios";
 import * as SecureStore from "expo-secure-store"; //should to know deep
-export const BASE_URL = "http://192.168.31.142:1337/";
+// export const BASE_URL = "http://192.168.31.142:1337/";
+export const BASE_URL = "http://192.168.0.104:1337/";
 const TIME_OUT = 30000;
 // export const DAILY_ACTIVITY_TOKEN_NAME = "daily_activity_token";
 export const BLOSSOM_TOKEN_NAME = "blossom_user_token";
-// export const BLOSSOM_TOKEN_NAME =
-//   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjE5NGZmZDgwZDU2Yjk4OGEyNzQ4ZjgiLCJpYXQiOjE3MTI5ODE2NzAsImV4cCI6MTcxMzU4NjQ3MH0.WEiQj1LiicNWf48h-M378i-6MblXNWdIebE0QYZpwiU";
-// export const DAILY_ACTIVITY_TOKEN_NAME =
-//   "eyJhbGciOiJIUzI1NiIeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWZlYTU2MjkxYzc3OGI3M2M3YjZjNjgiLCJpYXQiOjE3MTExODg0NTEsImV4cCI6MTcxMTc5MzI1MX0.t4jdPMgrzOsYJHGUJg8w6ICZzeU3cNS067jP8jZvaDw";
 const axiosInstance = axios.create({
   baseURL: BASE_URL,
   timeout: TIME_OUT,
@@ -37,6 +34,18 @@ axiosInstance.interceptors.request.use(async (req) => {
   }
 });
 
+// Interceptor to handle token expiration errors
+axiosInstance.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    if (error.response && error.response.status === 401) {
+      // Token expired or invalid
+      console.log("logout issuuue===================", error);
+      // await logout(); // Log out the user
+    }
+    return Promise.reject(error);
+  }
+);
 export const fetcher = (url: string) =>
   axiosInstance.get(url).then((res) => res.data);
 

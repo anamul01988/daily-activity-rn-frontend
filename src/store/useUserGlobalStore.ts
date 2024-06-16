@@ -6,6 +6,7 @@ import { createJSONStorage, persist } from "zustand/middleware";
 interface IUserGlobalStore {
   user: IAuthenticatedUser | null;
   updateUser: (user: IAuthenticatedUser | null) => void;
+  logout: () => void;
 }
 
 const useUserGlobalStore = create<IUserGlobalStore>()(
@@ -17,6 +18,7 @@ const useUserGlobalStore = create<IUserGlobalStore>()(
           user,
         });
       },
+      logout: () => set({ user: null }),
     }),
     {
       name: "dailyActivity-application-user-store",

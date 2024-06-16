@@ -66,6 +66,7 @@ const Task = ({ task, mutateTasks }: TaskProps) => {
 
   return (
     <Pressable onPress={toggleTaskStatus} onLongPress={navigateToEditTask}>
+      {/* // <Pressable onPress={toggleTaskStatus}> */}
       <Box p="4" bg="lightGray" borderRadius="rounded-5xl" flexDirection="row">
         <Box flexDirection="row" alignItems="center">
           <Box

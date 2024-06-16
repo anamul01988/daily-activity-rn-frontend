@@ -10,7 +10,8 @@ import { RootBottomTabParamList } from "./types";
 import Icons from "components/shared/icons";
 import CompletedScreen from "screens/completed-screen";
 import TodayScreen from "screens/today-screen";
-import CategoriesStackNavigator from "./categories-stack-navigator copy";
+import CategoriesStackNavigator from "./categories-stack-navigator";
+import ProfileScreen from "@/screens/profile-screen";
 
 const Tab = createBottomTabNavigator<RootBottomTabParamList>();
 
@@ -59,6 +60,15 @@ const BottomTabNavigator = () => {
         options={() => ({
           title: "Categories",
           tabBarIcon: ({ color }) => <Icons name="categories" color={color} />,
+          headerShown: false,
+        })}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={() => ({
+          title: "Profle",
+          tabBarIcon: ({ color }) => <Icons name="profile" color={color} />,
           headerShown: false,
         })}
       />
